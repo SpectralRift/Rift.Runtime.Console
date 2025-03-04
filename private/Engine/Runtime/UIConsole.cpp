@@ -57,6 +57,8 @@ namespace engine::runtime {
             ImGui::PushStyleColor(ImGuiCol_WindowBg, ImVec4(0.2f, 0.2f, 0.2f, 0.5f));
             ImGui::SetNextWindowSizeConstraints({600, 400}, {1200, 800});
 
+            auto& io = ImGui::GetIO();
+
             // draw the console window
             if (ImGui::Begin("Console", &b_IsConsoleOpen, ImGuiWindowFlags_NoCollapse)) {
                 ImGui::PushStyleColor(ImGuiCol_ChildBg, ImVec4(0.2f, 0.2f, 0.2f, 0.3f));
@@ -66,6 +68,7 @@ namespace engine::runtime {
                         ImVec2(0, -(ImGui::GetStyle().ItemSpacing.y + ImGui::GetFrameHeightWithSpacing())),
                         ImGuiChildFlags_NavFlattened | ImGuiChildFlags_Border, ImGuiWindowFlags_HorizontalScrollbar)) {
                     ImGui::PushStyleVar(ImGuiStyleVar_ItemSpacing, ImVec2(4, 1));
+                    ImGui::PushFont(io.Fonts->Fonts[1]); // Use second font
 
                     for (const auto &message: m_Messages) {
                         ImGui::PushStyleColor(ImGuiCol_Text, {
@@ -79,6 +82,7 @@ namespace engine::runtime {
                         ImGui::PopStyleColor();
                     }
 
+                    ImGui::PopFont();
                     ImGui::PopStyleVar();
                 }
                 ImGui::EndChild();
