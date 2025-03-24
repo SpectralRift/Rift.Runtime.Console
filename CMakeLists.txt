@@ -5,6 +5,10 @@ add_library(
         Rift_Runtime_Console
         STATIC
         private/Engine/Runtime/UIConsole.cpp
+        private/Engine/Commands/HelpCommand.cpp
+        private/Engine/Commands/ClearCommand.cpp
+        private/Engine/ConsoleCommandRepository.cpp
+        private/Engine/ConsoleModule.cpp
 )
 
 target_include_directories(
