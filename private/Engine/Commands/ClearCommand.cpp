@@ -1,5 +1,3 @@
-#pragma once
-
 #include <Engine/Commands/ClearCommand.hpp>
 
 #include <Engine/ConsoleCommandRepository.hpp>
