@@ -15,7 +15,13 @@ namespace engine {
     }
 
     std::shared_ptr<AbstractConsoleCommand> ConsoleCommandRepository::GetCommand(std::string_view command) {
-        return m_Commands[std::string(command)];
+        auto str = std::string{command};
+
+        if(m_Commands.contains(str)) {
+            return m_Commands.at(str);
+        }
+        
+        return nullptr;
     }
 
     const std::unordered_map<std::string, std::shared_ptr<AbstractConsoleCommand>>& ConsoleCommandRepository::GetCommands() const {
